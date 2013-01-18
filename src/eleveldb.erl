@@ -38,6 +38,7 @@
          validate_options/2]).
 
 -export([iterator/2,
+         keys_iterator/2,
          iterator_move/2,
          iterator_close/1]).
 
@@ -190,6 +191,9 @@ iterator(_Ref, _Opts, keys_only) ->
         end;
     ER -> ER
     end.
+
+keys_iterator(_Ref, _Opts) ->
+    iterator(_Ref, _Opts, keys_only).
 
 -spec async_iterator_move(reference(), itr_ref(), iterator_action()) -> {reference(), {ok, Key::binary(), Value::binary()}} |
                                                                         {reference(), {ok, Key::binary()}} |
